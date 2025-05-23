@@ -1,305 +1,357 @@
 :root {
-  --grey-: #141414;
-  --red-: #f42222;
-  --black-: #000000;
-  --white-: #ffffff;
-  --text-grey: #a6a6a6;
+    --grey-: #141414;
+    --red-: #f42222;
+    --black-: #000000;
+    --white-: #ffffff;
+    --text-grey: #a6a6a6;
+    --primary-font: 'Roboto', sans-serif;
+    --secondary-font: 'Inter', sans-serif;
 }
 
 body {
-  background-color: var(--black-);
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+    font-family: var(--secondary-font);
+    background-color: var(--black-);
+    color: var(--white-);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Enable smooth scrolling */
 }
 
-/*
-span {
-  color: var(--text-grey);
-}*/
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-family: var(--primary-font);
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.highlight {
+    color: var(--red-);
+}
+
+.section-divider {
+    background-color: var(--red-);
+    border: none;
+    height: 2px;
+    width: 150px;
+    margin: 30px auto;
+    opacity: 0.8;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black */
+    display: flex;
+    justify-content: space-between; /* Keep space-between for logo and links/button */
+    align-items: center;
+    position: fixed; /* Fixed navbar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: var(--black-); /* Solid black on scroll */
+}
 
 .logo img {
-  height: 50px;
-  width: 100px;
-  position: absolute;
-  left: 60px;
-  top: 15px;
+    height: 40px;
 }
 
-/* Navbar container */
-.navbar {
-  width: 100%;
-  height: 65px;
-  background-color: var(--black-); /* Black background */
-  display: flex;
-  justify-content: center; /* Center navbar items */
-  padding-top: 15px;
-  align-items: center; /* Center items vertically */
-  position: relative; /* So that the absolute positioning of the button works */
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* keeps it above other content */
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
-/* List styles */
-.navbar ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  margin-top: 5px; /* Space from top */
+.nav-links li {
+    margin-left: 30px;
 }
 
-/* List item styles */
-.navbar li a {
-  cursor: pointer;
-  font-family: "Roboto", sans-serif;
-  font-size: 23px;
-  font-weight: bold;
-  color: #ffffff;
-  text-decoration: none;
-  margin: 0 15px; /* Spacing between items */
-  transition: 0.2s ease-in-out;
+.nav-links li a {
+    font-family: var(--primary-font);
+    color: var(--white-);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.navbar li a:hover {
-  color: var(--red-);
+.nav-links li a:hover {
+    color: var(--red-);
 }
 
-/* Button styles */
-#btn {
-  cursor: pointer;
-  background-color: var(--white-);
-  color: var(--black-);
-  height: 40px;
-  width: 120px;
-  display: flex;
-  justify-content: center; /* Center the text horizontally inside the button */
-  align-items: center; /* Center the text vertically inside the button */
-  border-radius: 10px;
-  position: absolute; /* Position the button absolutely */
-  right: 90px; /* Adjust this value to bring the button closer to the navbar */
-  transition: ease-in-out 0.2s;
+.contact-button a {
+    display: inline-block;
+    background-color: var(--white-);
+    color: var(--black-);
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: var(--secondary-font);
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Remove any absolute positioning that might have been there */
+    /* position: absolute;
+    right: some-value; */
+    margin-left: 30px; /* Add some space between the links and the button */
 }
 
-/* Button text styling */
-#btn span {
-  font-weight: bold;
-  font-family: "Inter", sans-serif;
-  font-size: 18px;
+.contact-button a:hover {
+    background-color: var(--red-);
+    color: var(--white-);
 }
 
-#btn:hover {
-  color: var(--white-);
-  background-color: var(--red-);
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
 }
 
-.hero-container {
-  width: 100%;
-  min-height: calc(100vh - 80px); /* assuming your navbar takes ~80px space */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hero-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
-.content {
-  text-align: center;
+.hero-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
-.content h1 {
-  font-size: 120px;
-  color: var(--white-);
+.hero-content {
+    max-width: 800px;
+    padding: 40px;
 }
 
-.content span {
-  color: var(--text-grey);
-  display: block; /* Forces it to act like a block element */
-  margin-top: 25px; /* Adjust this for desired space */
+.hero-title {
+    font-family: var(--primary-font);
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.content a {
-  font-family: "Roboto", sans-serif;
-  font-size: 30px;
-  text-decoration: none;
-  border: 2px solid var(--red-);
-  padding: 25px 70px;
-  border-radius: 50px;
-  color: var(--white-);
-  display: inline-block; /* Needed for margin to apply cleanly */
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-grey);
+    margin-bottom: 30px;
 }
 
-.content a:hover {
-  background: var(--red-);
+.hero-button {
+    display: inline-block;
+    background-color: var(--red-);
+    color: var(--white-);
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: var(--primary-font);
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-.background-clip {
-  position: absolute;
-  height: 100vh;
-  width: 100%;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
+.hero-button:hover {
+    background-color: darken(var(--red-), 10%);
 }
 
-.about-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px; /* space between lines and text */
-  margin-top: 300px;
-  margin-bottom: 400px;
+/* About Section */
+.about-section .about-text {
+    font-size: 1.1rem;
+    color: var(--text-grey);
+    line-height: 1.8;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.about {
-  color: var(--white-);
-  font-size: 36px;
-  margin: 0;
+/* Upcoming Section */
+.upcoming-section .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    flex-wrap: wrap;
 }
 
-.about-container h1 {
-  background-color: none;
+.upcoming-text {
+    flex: 1;
+    min-width: 300px;
 }
 
-hr {
-  background-color: var(--red-);
-  border: none; /* remove default border */
-  height: 2px;
-  width: 250px;
+.upcoming-image-wrapper {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.Trybe_back {
-  position: absolute;
-  bottom: -1450px;
-  left: 50%; /* Position horizontally at the middle */
-  transform: translate(-50%, -50%);
-  width: 100%; /* Take up full width */
-  height: 100vh; /* Take up full height of the viewport */
-  opacity: 0.1; /* Adjust opacity (0 = invisible, 1 = fully visible) */
-  z-index: -1; /* Ensure it stays behind the content */
-  pointer-events: none; /* Prevent it from blocking clicks or interactions with other elements */
+.upcoming-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Upcoming section container */
-.upcoming-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 100px;
-  text-align: center;
-  color: var(--white-);
+.upcoming-image:hover {
+    transform: scale(1.05);
 }
 
-.upcoming-container-text h1 {
-  font-size: 50px;
-  font-family: "Roboto", sans-serif;
-  margin-bottom: 20px;
+/* Team Section (Placeholder Styling) */
+.team-section .container {
+    text-align: center;
 }
 
-.upcoming-container-text p {
-  font-size: 18px;
-  font-family: "Inter", sans-serif;
-  line-height: 1.6;
-  color: var(--text-grey);
-  max-width: 600px; /* Limit the width of the text */
+/* Contact Section (Placeholder Styling) */
+.contact-section .container {
+    text-align: center;
 }
 
-.upcoming-container-image {
-  margin-top: 30px;
-  margin-bottom: 40%;
+/* Footer */
+.site-footer {
+    background-color: var(--grey-);
+    padding: 60px 0;
+    color: var(--text-grey);
+    font-size: 0.9rem;
 }
 
-.upcoming-container-image img {
-  width: 100%; /* Adjust the image size */
-  max-width: 1000px; /* Limit the maximum width */
-  border-radius: 40px; /* Add rounded corners */
-  position: absolute;
-  right: 24%;
+.footer-top {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    gap: 30px;
 }
 
-.footer {
-  margin-top: 300px;
+.footer-logo {
+    flex: 1 1 200px;
 }
 
-.footer hr {
-  margin-top: 120px;
-  background-color: var(--text-grey);
-  border-radius: 2px;
-  height: 1px;
-  width: 95%;
+.footer-logo img {
+    height: 50px;
+    margin-bottom: 15px;
 }
 
-.footer-contents {
-  margin-left: 50px;
-  display: flex;
-  cursor: pointer;
+.footer-links-column {
+    flex: 1 1 150px;
 }
 
-.footer-content-1 img {
-  height: 100px;
-  width: 200px;
+.footer-links-column h3 {
+    color: var(--white-);
+    font-family: var(--primary-font);
+    margin-bottom: 15px;
 }
 
-.footer-content-1 span {
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  color: var(--white-);
-}
-
-.footer-content-2 {
-  margin-left: 100px;
-}
-
-.footer-content-2 h1 {
-  color: var(--white-);
-  font-size: 25px;
+.footer-links {
+    list-style: none;
+    padding: 0;
 }
 
 .footer-links li {
-  margin-top: 5px;
-  list-style: none;
-  color: var(--white-);
-  font-size: 25px;
+    margin-bottom: 8px;
 }
 
 .footer-links a {
-  list-style: none;
-  text-decoration: none;
-  color: var(--white-);
+    color: var(--text-grey);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.footer-content-3 {
-  margin-left: 70px;
+.footer-links a:hover {
+    color: var(--red-);
 }
 
-.footer-content-3 h1 {
-  color: var(--white-);
-  font-size: 25px;
+.footer-community {
+    flex: 1 1 200px;
 }
 
-.heading {
-  font-size: 130px; 
+.footer-community h3 {
+    color: var(--white-);
+    font-family: var(--primary-font);
+    margin-bottom: 15px;
 }
 
-.heading-text-red{
-  color: rgb(255, 0, 0);
+.footer-icons {
+    display: flex;
+    gap: 15px;
 }
 
-.heading-text-white{
-  color: white;
+.footer-icons a {
+    color: var(--text-grey);
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
 }
 
-.community h1{
-  margin-top: 12px;
-  margin-left: 75px;
+.footer-icons a:hover {
+    color: var(--red-);
 }
 
-.community i {
-  color: var(--white-);
-  font-size: 30px;
-  margin: 0 10px;
+.footer-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 40px 0;
 }
 
-.community i:hover {
-  color: var(--red-);
+.footer-bottom {
+    text-align: center;
+    opacity: 0.7;
+}
+
+/* --- Scroll Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
 }
