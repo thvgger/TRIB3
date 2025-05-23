@@ -1,6 +1,7 @@
 :root {
     --grey-: #141414;
     --red-: #f42222;
+    --darkred-: #920f0f;
     --black-: #000000;
     --white-: #ffffff;
     --text-grey: #a6a6a6;
@@ -51,17 +52,21 @@ body {
 }
 
 /* Navbar */
-.navbar {
-    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black */
-    display: flex;
-    justify-content: space-between; /* Keep space-between for logo and links/button */
-    align-items: center;
-    position: fixed; /* Fixed navbar */
+.navbar{
+    padding-right: 40px;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
-    transition: background-color 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+}
+
+.nav-content {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar.scrolled {
@@ -87,7 +92,7 @@ body {
     font-family: var(--primary-font);
     color: var(--white-);
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 25px;
     font-weight: bold;
     transition: color 0.3s ease;
 }
@@ -106,10 +111,7 @@ body {
     font-family: var(--secondary-font);
     font-weight: bold;
     transition: background-color 0.3s ease, color 0.3s ease;
-    /* Remove any absolute positioning that might have been there */
-    /* position: absolute;
-    right: some-value; */
-    margin-left: 30px; /* Add some space between the links and the button */
+    margin-left: 30px;
 }
 
 .contact-button a:hover {
@@ -176,7 +178,7 @@ body {
 }
 
 .hero-button:hover {
-    background-color: darken(var(--red-), 10%);
+    background-color: var(--darkred-);
 }
 
 /* About Section */
@@ -238,7 +240,7 @@ body {
     background-color: var(--grey-);
     padding: 60px 0;
     color: var(--text-grey);
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .footer-top {
